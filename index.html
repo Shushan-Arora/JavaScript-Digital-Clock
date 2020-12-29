@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Digital Clock Project By Subrat Sir</title>
+<style>
+	body{
+		background-color:black;
+		background:radial-gradient(darkcyan 0%,black 80%)
+	}
+	#clock{
+		color:cyan;
+		font-family:stencil;
+		font-size:4em;
+		height:100px;
+		margin-top:250px;
+	}
+	button{
+		padding:15px;
+	}
+</style>
+</head>
+<body>
+<center>
+<div id="clock"></div>
+<button onClick="startClock()">Start Clock</button>
+<button onClick="stopClock()">Stop Clock</button>
+</center>
+<script>
+function startClock(){
+		var date = new Date();
+		var hour = date.getHours();
+		var min = date.getMinutes();
+		var sec = date.getSeconds();
+		
+		var session = "AM";
+		
+		if(hour>12){
+			hour = hour - 12;
+			session = "PM";
+		}
+		
+		if(min<10) min = "0"+min;
+		if(sec<10) sec = "0"+sec;
+		if(hour<10) hour = "0" +hour;
+		document.getElementById("clock").innerText = hour+":"+min+":"+sec+" "+session;
+		cleartimeout = setTimeout(startClock,60000);
+		}
+		function stopClock(){
+			clearTimeout(cleartimeout);
+		}
+
+</script>
+</body>
+</html>
